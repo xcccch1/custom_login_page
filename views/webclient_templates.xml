@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="custom_database_display_name_login" inherit_id="web.login" name="Custom Database Display Name Login">
+    <template id="login_page_settings_login" inherit_id="web.login" name="Login Page Settings: Database Display Name">
         <xpath expr="//input[@id='db']" position="replace">
-            <!-- <input type="hidden" name="db" t-att-value="request.db"/> -->
+            <input type="hidden" name="db" t-att-value="database_name or request.db"/>
             <input
                 type="text"
-                name="db"
                 id="db"
-                t-att-value="database_display_name or request.db"
                 class="form-control"
+                t-att-value="database_display_name or database_name or request.db"
                 required="required"
                 readonly="readonly"
             />

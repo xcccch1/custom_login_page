@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Custom Database Display Name',
+    'name': 'Login Page Settings',
     'author': 'xcccch1',
-    'version': '18.0.1.0.0',
+    'version': '18.0.1.2.0',
     'license': 'LGPL-3',
     'category': 'Operations/Custom Frontend',
-    'summary': 'Show mapped display names for databases on login screens',
+    'summary': 'Manage login page settings, including public database names',
     'depends': [
+        'base_setup',
         'web',
     ],
     'data': [
+        'views/res_config_settings_views.xml',
         'views/webclient_templates.xml',
     ],
     'installable': True,
