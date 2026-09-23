@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="custom_database_display_name_login" inherit_id="web.login" name="Custom Database Display Name Login">
+        <xpath expr="//div[contains(@class, 'field-db')]//input[@name='db']" position="replace">
+            <!-- <input type="hidden" name="db" t-att-value="request.db"/> -->
+            <input
+                type="text"
+                id="db"
+                t-att-value="database_display_name or request.db"
+                t-attf-class="form-control #{'form-control-sm' if form_small else ''}"
+                required="required"
+                readonly="readonly"
+            />
+        </xpath>
+    </template>
+</odoo>
