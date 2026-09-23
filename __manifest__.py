@@ -2,7 +2,7 @@
 {
     'name': 'Login Page Settings',
     'author': 'xcccch1',
-    'version': '19.0.1.2.1',
+    'version': '19.0.1.3.1',
     'license': 'LGPL-3',
     'category': 'Operations/Custom Frontend',
     'summary': 'Manage login page settings, including public database names',

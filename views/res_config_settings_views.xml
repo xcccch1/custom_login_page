@@ -14,6 +14,13 @@
                     >
                         <field name="database_display_name" placeholder="My Odoo Database"/>
                     </setting>
+                    <setting
+                        id="show_login_page_footer_setting"
+                        string="Show Login Page Footer"
+                        help="Show or hide the database management link and Odoo branding at the bottom of the login page."
+                    >
+                        <field name="show_login_page_footer"/>
+                    </setting>
                 </block>
             </xpath>
         </field>

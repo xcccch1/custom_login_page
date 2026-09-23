@@ -4,6 +4,7 @@ import logging
 
 from odoo import http, sql_db
 from odoo.http import request
+from odoo.tools import str2bool
 
 from odoo.addons.web.controllers import home as web_home
 from odoo.addons.web.controllers import database as web_database
@@ -11,7 +12,8 @@ from odoo.addons.web.controllers import database as web_database
 
 DATABASE_TEMPLATE_TARGET = '<t t-out="db" />'
 DATABASE_TEMPLATE_REPLACEMENT = '<t t-out="database_display_names.get(db, db)" />'
-DATABASE_DISPLAY_NAME_PARAM = 'custom_database_display_name.display_name'
+DATABASE_DISPLAY_NAME_PARAM = 'custom_login_page.display_name'
+SHOW_LOGIN_PAGE_FOOTER_PARAM = 'custom_login_page.show_login_page_footer'
 
 _logger = logging.getLogger(__name__)
 
@@ -58,6 +60,14 @@ def get_database_display_names(databases):
     }
 
 
+def is_login_page_footer_visible(env):
+    show_footer = env['ir.config_parameter'].sudo().get_param(
+        SHOW_LOGIN_PAGE_FOOTER_PARAM,
+        default='True',
+    )
+    return str2bool(show_footer, default=True)
+
+
 class Home(web_home.Home):
 
     @http.route()
@@ -72,6 +82,10 @@ class Home(web_home.Home):
 
             response.qcontext['database_name'] = current_db
             response.qcontext['database_display_name'] = (get_database_display_name(current_db))
+            response.qcontext['disable_footer'] = (
+                response.qcontext.get('disable_footer', False)
+                or not is_login_page_footer_visible(request.env)
+            )
 
         return response
 

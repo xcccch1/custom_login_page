@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="custom_database_display_name_login" inherit_id="web.login" name="Login Page Settings: Database Display Name">
+    <template id="login_page_settings_login" inherit_id="web.login" name="Login Page Settings: Database Display Name">
         <xpath expr="//input[@id='db']" position="replace">
             <input type="hidden" name="db" t-att-value="database_name or request.db"/>
             <input
